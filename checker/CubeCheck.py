@@ -1,11 +1,31 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+CubeCheck.py: Magic Cube Analyzer
+
+Verification Suite:
+1. Duplicate/Sequence Check: Validates if elements are unique and form a continuous sequence (starting from 0 or 1).
+2. Power Sums (S_k): Checks if the sum of x_i^k is constant for k = 1 to 7.
+3. Product (P): Checks if the product of x_i is constant.
+
+Output:
+- Displays the constant value only for conditions that are satisfied across all lines.
+
+License: CC BY 4.0
+Copyright (c) 2025 Toshihiro Shirakawa
+"""
+
 import math
 import sys
 sys.set_int_max_str_digits(0)
 
+MAX_POWER = 7
+
 def check_regularity(data, n):
     unique = set(data)
     if len(unique) != n ** 3:
-        print(f"Error: Duplicate elements found! (Unique: {len(unique_elements)})")
+        print(f"Error: Duplicate elements found! (Unique: {len(unique)})")
         return
 
     min_val = min(unique)
@@ -19,11 +39,11 @@ def check_regularity(data, n):
         print(f"Non-normal (Range: {min_val} to {max_val})")
 
 
-data = []
-fname = input("Input file name: ")
+fname = input("Input Magic Cube file name: ")
 
 try:
     with open(fname, mode='r', encoding='utf-8') as f:
+        data = []
         for line in f:
             line = line.strip()
             if not line or line.startswith('#'):
@@ -42,8 +62,7 @@ try:
     else:
         print(f"{N}*{N}*{N} Cube")
         check_regularity(data, N)
-        k = 1
-        while(1):
+        for k in range(1,MAX_POWER):
             semimagic = True
             diag = True
             sum = 0
@@ -104,10 +123,6 @@ try:
                 if not diag:
                     label += "(semimagic)"
                 print(f"{label}={sum}")
-            k += 1
-            if not semimagic:
-                break
-
 
         semimagic = True
         diag = True
