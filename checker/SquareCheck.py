@@ -81,7 +81,7 @@ try:
     else:
         print(f"{N}*{N} Square")
         check_regularity(data, N)
-        for k in range(1,MAX_POWER):
+        for k in range(1,MAX_POWER + 1):
             semimagic = True
             diag = True
             sum = 0
