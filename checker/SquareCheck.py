@@ -112,7 +112,7 @@ try:
                 s += data[N-1-i+i*N] ** k
             if s != sum:
                 diag = False
-            if semimagic or diag:
+            if semimagic:
                 label = f"S{k}"
                 if not diag:
                     label += "(semimagic)"
@@ -148,7 +148,7 @@ try:
             p *= data[N-1-i+i*N]
         if p != product:
             diag = False
-        if semimagic or diag:
+        if semimagic:
             label = f"P"
             if not diag:
                 label += "(semimagic)"
@@ -185,7 +185,7 @@ try:
                 factors =  factors_update(factors, data[N-1-i+i*N])
             if factors != basefactors:
                 diag = False
-            if semimagic or diag:
+            if semimagic:
                 label = f"P1"
                 if not diag:
                     label += "(semimagic)"

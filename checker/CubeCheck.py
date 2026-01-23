@@ -118,7 +118,7 @@ try:
                 s += data[i + (N-1-i)*N + (N-1-i)*N*N] ** k
             if s != sum:
                 diag = False
-            if semimagic or diag:
+            if semimagic:
                 label = f"S{k}"
                 if not diag:
                     label += "(semimagic)"
@@ -179,7 +179,7 @@ try:
             p *= data[i + (N-1-i)*N + (N-1-i)*N*N]
         if p != product:
             diag = False
-        if semimagic or diag:
+        if semimagic:
             label = f"P"
             if not diag:
                 label += "(semimagic)"
